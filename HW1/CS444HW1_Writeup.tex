@@ -1,0 +1,52 @@
+\documentclass[letterpaper,10pt,fleqn]{article}
+
+\def\name{Group 7}
+
+\parindent = 0.0 in
+\parskip = 0.2 in
+
+\title{Homework 1}
+\author{Group 7: Nicholas Skinner}
+
+\begin{document}
+	\maketitle
+	\hrule
+	
+	\section*{Actions Performed}
+
+	\section*{Command Line Flags}
+	Command Line w/ Flags:
+	qemu-system-i386 -gdb tcp::???? -S -nographic -kernel bzImage-qemux86.bin -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug".
+	
+	-gdb: This flag is followed by a device (for this example localhost 5507) and signals a wait for a gdb connection on the device
+	
+	-S: this tells it to not start CPU on startup. This is the reason why the command will halt until you type continue.
+	
+	-nographic: This disables the graphics, and makes qemu into a command line interface
+	
+	-kernel: This signals to use the file that follows as the kernel image. 
+	
+	-drive: This defines a new drive to use. The drive is used with the disk image that follows after the flag, for this setup, that is file=core-image-lsb-sdk-qemux86.ext4
+	
+	-enable-kvm: This flag enables full kernel based VM support, continue....
+	
+	-net none: No network devices are being configured with our setup, so we use this flag.
+	
+	-usb: This flag enables the usb driver. We can use usb to upload files to the VM. 
+	
+	-localtime: Boots up the kernel with the current UTC.
+	
+	--no-reboot: this flag makes it so that instead of allowing a reboot, the program will just exit.
+	
+	--append: This flag passes command line arguments to the booting kernel, it appears that in this example it is located in /dev/vda, it is using ttyS0 for the linux port, and the kernel is starting in debug mode.
+	
+	\section*{Concurrency Questions}
+	
+	\section*{Actions Performed}
+	
+	\section*{Version Control Log}
+	
+	\section*{Work Log}
+
+
+\end{document}
