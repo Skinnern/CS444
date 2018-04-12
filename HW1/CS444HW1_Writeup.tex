@@ -1,52 +1,96 @@
-\documentclass[letterpaper,10pt,fleqn]{article}
+\documentclass[letterpaper,10pt,fleqn,draftclsnofoot,onecolumn]{IEEEtran}
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+\usepackage{balance}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+\usepackage{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+\usepackage{hyperref}
+\usepackage{geometry}
 
-\def\name{Group 7}
-
-\parindent = 0.0 in
-\parskip = 0.2 in
-
-\title{Homework 1}
-\author{Group 7: Nicholas Skinner}
-
+\title{CS444 Homework 1}
+\def\name{Lilliana Watts, Nicholas Skinner, Yong Ping Li \\\today}
+\author{\name}
 \begin{document}
 	\maketitle
-	\hrule
+	\hrulefill
+	\section*{List of Commands Used}
+	Placeholder
 	
-	\section*{Actions Performed}
-
-	\section*{Command Line Flags}
-	Command Line w/ Flags:
-	qemu-system-i386 -gdb tcp::???? -S -nographic -kernel bzImage-qemux86.bin -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug".
 	
-	-gdb: This flag is followed by a device (for this example localhost 5507) and signals a wait for a gdb connection on the device
+	\section*{ QEMU Command Line Flags }
+	{\bf Command Line w/ Flags}: \newline
+	qemu-system-i386 -gdb tcp::5507 -S -nographic -kernel bzImage-qemux86.bin -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug".
+	\newline
+	\newline
+	{\bf Individual flags:}
+	\newline
+	$\bullet$-{\bf gdb}: This flag is followed by a device (for this example localhost 5507) and signals a wait for a gdb connection on the device.
 	
-	-S: this tells it to not start CPU on startup. This is the reason why the command will halt until you type continue.
+	$\bullet$-{\bf S}: this tells it to not start CPU on startup. This is the reason why the command will halt until you type continue.
 	
-	-nographic: This disables the graphics, and makes qemu into a command line interface
+	$\bullet$-{\bf nographic}: This disables the graphics, and makes qemu into a command line interface.
 	
-	-kernel: This signals to use the file that follows as the kernel image. 
+	$\bullet$-{\bf kernel}: This signals to use the file that follows as the kernel image. 
 	
-	-drive: This defines a new drive to use. The drive is used with the disk image that follows after the flag, for this setup, that is file=core-image-lsb-sdk-qemux86.ext4
+	$\bullet$-{\bf drive}: This defines a new drive to use. The drive is used with the disk image that follows after the flag, for this setup, that is file=core-image-lsb-sdk-qemux86.ext4
 	
-	-enable-kvm: This flag enables full kernel based VM support, allowing us to use the linux kernel to create and run a VM
+	$\bullet$-{\bf enable-kvm}: This flag enables full kernel based VM support, allowing us to use the linux kernel to create and run a VM.
 	
-	-net none: No network devices are being configured with our setup, so we use this flag.
+	$\bullet$-{\bf net none}: No network devices are being configured with our setup, so we use this flag.
 	
-	-usb: This flag enables the usb driver. We can use usb to upload files to the VM. 
+	$\bullet$-{\bf usb}: This flag enables the usb driver. We can use usb to upload files to the VM. 
 	
-	-localtime: Boots up the kernel with the current UTC.
+	$\bullet$-{\bf localtime}: Boots up the kernel with the current UTC.
 	
-	--no-reboot: this flag makes it so that instead of allowing a reboot, the program will just exit.
+	$\bullet$--{\bf no-reboot}: this flag makes it so that instead of allowing a reboot, the program will just exit.
 	
-	--append: This flag passes command line arguments to the booting kernel, it appears that in this example it is located in /dev/vda, it is using ttyS0 for the linux port, and the kernel is starting in debug mode.
+	$\bullet$--{\bf append}: This flag passes command line arguments to the booting kernel, it appears that in this example it is located in /dev/vda, it is using ttyS0 for the linux port, and the kernel is starting in debug mode.
 	
 	\section*{Concurrency Questions}
+	%do we even need to do these?
+	\subsection{What do you think the main point of this assignment is?}
+	$\bullet$This assignment is intended to refresh our knowledge of parallel programming, by having us implement a multi-threaded program with shared resources.
 	
-	\section*{Actions Performed}
+	\subsection{How did you personally approach the problem? Design decisions, algorithm, etc.}
+	%[1] and [2] are placeholders for bibliography
+	$\bullet$We first researched the information provided in the Little Book of Semaphores[1], as well as the operation of mutex locks. The example provided by the book had been a useful starting point as it had a step-by-step approach. As the rdrand instruction is not supported on the provided os2 servers, we instead used the Mersenne Twister C Implementation[2] for our code. In our code, it was used by creating a function that generates a number within the given range passed to the function (two ints).  
 	
-	\section*{Version Control Log}
+	We used the Twister function genrand real2 to aquire a double value between 0 and 1, then we multiply the maximum value by that double until a value above the minimum was obtained. The shared buffer that had been implemented was an array of 32 item structs. The buffer operates by placing an item in the first available space, which is denoted by an Item.number value of 0. Items are consumed by the buffer in the same manner, where it finds the first available non-zero item, saves the Item.number and Item.wait values in a new Item, then resetting said Item's members to zero and returning its saved item. Consumer sleep time is read from the returning struct, and the producer sleep time is a randomly generated value.
+	
+	\subsection{How did you ensure your solution was correct? Testing details, for instance.}
+	Printf statements were used frequently within the program's operation, like when a producer had created an item, when a consumer removed and item, as well as when a buffer had been accessed. the program had been left to run until 100 items had been both produced as well as consumed. and the output had been checked to determine if that had what was expected.
+	
+	
+	\subsection{What did you learn?}
+	$\bullet$We learned how mutex locks and pthread waits operate, and how to implement both correctly. More specifically, we learned how pthread cond signals are used to unblock the threads, and when to call them.  
+	\section*{ Github Log }
+	Placeholder
 	
 	\section*{Work Log}
-
-
+		{\bf Lilliana Watts}
+		
+		$\bullet$ 4/x/2018 - Clone Yocto Repository
+		
+		{\bf Nicholas Skinner}
+		
+		$\bullet$ 4/10/2018 - Explain Flags For Writeup
+		
+		{\bf Yong Ping Li}
+		
+		$\bullet$
+		
+		
+		
+	
 \end{document}
+
