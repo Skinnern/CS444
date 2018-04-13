@@ -16,6 +16,8 @@
 \newcommand{\cblue}[1]{{\color{blue}#1}}
 \usepackage{hyperref}
 \usepackage{geometry}
+\usepackage{longtable,hyperref}
+\newcommand{\longtableendfoot}
 
 \title{CS444 Homework 1}
 \def\name{Lilliana Watts, Nicholas Skinner, Yong Ping Li \\\today}
@@ -57,7 +59,7 @@
 	$\bullet$--{\bf append}: This flag passes command line arguments to the booting kernel, it appears that in this example it is located in /dev/vda, it is using ttyS0 for the linux port, and the kernel is starting in debug mode.
 	
 	\section*{Concurrency Questions}
-	%do we even need to do these?
+	%do we even need to do these? or should they not be the concurrency stuff?
 	\subsection{What do you think the main point of this assignment is?}
 	$\bullet$This assignment is intended to refresh our knowledge of parallel programming, by having us implement a multi-threaded program with shared resources.
 	
@@ -72,9 +74,40 @@
 	
 	
 	\subsection{What did you learn?}
-	$\bullet$We learned how mutex locks and pthread waits operate, and how to implement both correctly. More specifically, we learned how pthread cond signals are used to unblock the threads, and when to call them.  
+	$\bullet$We learned how mutex locks and pthread waits operate, and how to implement both correctly. More specifically, we learned how pthread cond signals are used to unblock the threads, and when to call them. 
+	 
 	\section*{ Github Log }
-	Placeholder
+	
+	%Table of Github commits
+	
+	\begin{longtable}{|rllp{8cm}rrr|}
+		\hline \multicolumn{1}{|c}{\textbf{V}} & \multicolumn{1}{c}{\textbf{tag}}
+		& \multicolumn{1}{c}{\textbf{Date}}
+		& \multicolumn{1}{c}{\textbf{Commit Message}}
+		& \multicolumn{1}{c}{\textbf{ML}}
+		& \multicolumn{1}{c}{\textbf{LA}} & \multicolumn{1}{c|}{\textbf{DL}} \\ \hline
+		\endhead
+		
+		\hline \multicolumn{7}{|r|}{\longtableendfoot} \\ \hline
+		\endfoot
+		
+		\hline% \hline
+		\endlastfoot
+		
+		%legend for table:
+		%V & Tag & Date & Commit Message & ML & AL & DL
+		%V 				- version ( just use the number after the commit above)
+		%tag 			- in case you need to make 
+		%Date 			- date it was pushed
+		%Commit Message	- Commit message along the commit
+		%ML 			- Modified lines
+		%AL 			- Added lines
+		%DL 			- Deleted lines
+		\hline 1 &  & 2018-04-03 & Initial Commit & 0 & 0 & 0 \\
+
+		
+	\end{longtable}
+	
 	
 	\section*{Work Log}
 		{\bf Lilliana Watts}
