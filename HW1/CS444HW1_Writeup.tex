@@ -9,7 +9,6 @@
 \usepackage{url}
 \usepackage{balance}
 \usepackage{enumitem}
-\usepackage{pstricks, pst-node}
 \usepackage{geometry}
 \geometry{textheight=8.5in, textwidth=6in}
 \newcommand{\cred}[1]{{\color{red}#1}}
@@ -19,23 +18,20 @@
 \usepackage{longtable,hyperref}
 \newcommand{\longtableendfoot}
 
+
 \title{CS444 Homework 1}
 \def\name{Lilliana Watts, Nicholas Skinner, Yong Ping Li \\\today}
 \author{\name}
 \begin{document}
 	\maketitle
 	\hrulefill
-	\section*{List of Commands Used}
+	\section*{Commands Used}
 	Placeholder
-	
-	
-	\section*{ QEMU Command Line Flags }
-	{\bf Command Line w/ Flags}: \newline
-	qemu-system-i386 -gdb tcp::5507 -S -nographic -kernel bzImage-qemux86.bin -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug".
-	\newline
-	\newline
-	{\bf Individual flags:}
-	\newline
+	\section*{Qemu Flags}
+	\subsection{Command Line:}
+-drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug".
+
+	{\bf Individual flags:} \newline
 	$\bullet$-{\bf gdb}: This flag is followed by a device (for this example localhost 5507) and signals a wait for a gdb connection on the device.
 	
 	$\bullet$-{\bf S}: this tells it to not start CPU on startup. This is the reason why the command will halt until you type continue.
@@ -77,59 +73,61 @@
 	$\bullet$We learned how mutex locks and pthread waits operate, and how to implement both correctly. More specifically, we learned how pthread cond signals are used to unblock the threads, and when to call them. 
 	 
 	\section*{ Github Log }
-	
+	\begin{tabular}{l l p{1.5in}}\textbf{Detail} & \textbf{Author} & \textbf{Description}\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/9138e6857021329354027c49c35fea1604fd5585}{9138e68} & Nicholas & Initial commit\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/c0384d23d8fbcb4f73b26ab0fea4e7736f443359}{c0384d2} & Nicholas & Command Line Flags\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/05e52f4b508b9f440e9cb84cf2e2baa3ba738219}{05e52f4} & Nicholas & FixFormat ConcQuestions\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/74e34ce8bf215a03c8a2ea6e45e4887e311d3972}{74e34ce} & Nicholas & Add Table to Writeup\\\hline
+	\end{tabular}
 	%Table of Github commits
 	
-	\begin{longtable}{|rllp{8cm}rrr|}
-		\hline \multicolumn{1}{|c}{\textbf{V}} & \multicolumn{1}{c}{\textbf{tag}}
-		& \multicolumn{1}{c}{\textbf{Date}}
-		& \multicolumn{1}{c}{\textbf{Commit Message}}
-		& \multicolumn{1}{c}{\textbf{ML}}
-		& \multicolumn{1}{c}{\textbf{LA}} & \multicolumn{1}{c|}{\textbf{DL}} \\ \hline
-		\endhead
-		
-		\hline \multicolumn{7}{|r|}{\longtableendfoot} \\ \hline
-		\endfoot
-		
-		\hline% \hline
-		\endlastfoot
-		
-		%legend for table:
-		%V & Tag & Date & Commit Message & ML & AL & DL
-		%V 				- version ( just use the number after the commit above)
-		%tag 			- in case you need to make 
-		%Date 			- date it was pushed
-		%Commit Message	- Commit message along the commit
-		%ML 			- Modified lines
-		%AL 			- Added lines
-		%DL 			- Deleted lines
-		\hline 1 &  & 2018-04-03 & Initial Commit & 0 & 0 & 0 \\
-
-		
-	\end{longtable}
+	%\begin{longtable}{|rllp{7cm}rrr|}
+	%\hline
+	%\multicolumn{1}{|c}{\textbf{V}} 
+	%& \multicolumn{1}{c}{\textbf{tag}}
+	%& \multicolumn{1}{c}{\textbf{Date}}
+	%& \multicolumn{1}{c}{\textbf{Commit Message}}
+	%& \multicolumn{1}{c}{\textbf{ML}}
+	%& \multicolumn{1}{c}{\textbf{LA}} 
+	%& \multicolumn{1}{c|}{\textbf{DL}} \\ 
+	%\endhead
+	%\hline
+	%\multicolumn{7}{|r|}{\longtableendfoot}\\
+	%\endfoot
+	%\hline
+	%\endlastfoot 
 	
+	%1 & 0 & 2018-04-03 & InitialCommit & 0 & 0 & 0 \\
+%\end{longtable}
+			%legend for table:
+	%V & Tag & Date & Commit Message & ML & AL & DL
+	%V 				- version ( just use the number after the commit above)
+	%tag 			- in case you need to make 
+	%Date 			- date it was pushed
+	%Commit Message	- Commit message along the commit
+	%ML 			- Modified lines
+	%AL 			- Added lines
+	%DL 			- Deleted lines
 	
 	\section*{Work Log}
-		{\bf Lilliana Watts}
+	\begin{tabular}{l l c p{1.1in}}\textbf{Date} & \textbf{Name} & \textbf{Hours} & \textbf{Description}\\\hline
+		4/14 & Nicholas & 2 & writeup\\\hline
+		4/13 & Nicholas & 2 & writeup\\\hline
+		4/12 & Lilliana & 2 & VM set up\\\hline
+		4/12 & Nicholas & 2 & writeup\\\hline
+	\end{tabular}
 		
-		$\bullet$ 4/x/2018 - Clone Yocto Repository
+		\nocite{*}
+		\bibliographystyle{plain}
+		\bibliography{refs_a1}
 		
-		{\bf Nicholas Skinner}
-		
-		$\bullet$ 4/10/2018 - Explain Flags For Writeup
-		
-		{\bf Yong Ping Li}
-		
-		$\bullet$
-		
-		
-		\begin{thebibliography}{9}
-			\bibitem{mt}
-			Matsumoto, Makoto and Nishimura, Takuji.
-			\textit{Mersenne Twister}
-			2002.
-			\\\texttt{http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/CODES/mt19937ar.c}
-		\end{thebibliography}
+		%\begin{thebibliography}{9}
+		%	\bibitem{mt}
+		%	Matsumoto, Makoto and Nishimura, Takuji.
+		%	\textit{Mersenne Twister}
+		%	2002.
+		%	\\\texttt{http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/CODES/mt19937ar.c}
+		%\end{thebibliography}
 	
 \end{document}
 
