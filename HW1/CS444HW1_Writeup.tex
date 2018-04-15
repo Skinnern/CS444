@@ -26,7 +26,43 @@
 	\maketitle
 	\hrulefill
 	\section*{Commands Used}
-	Placeholder
+	Command log:
+	From directory Spring2018/group7/yocto-linux-3.19.2
+	
+	Terminal 1: 
+	make mrproper
+	
+	cp ../config-3.19.2-yocto-standard .config
+	
+	make menuconfig
+	
+	make -j4 all
+	
+	source ../environment-setup-i586-poky-linux
+	
+	qemu-system-i386 -gdb tcp::5507 -S -nographic -kernel bzImage-qemux86.bin -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug".
+	
+	
+	
+	Terminal 2: 
+	source ../environment-setup-i586-poky-linux
+	
+	\$GDB
+	
+	target remote localhost:5507
+	
+	continue
+	
+	Terminal 1: 
+	
+	(when prompted) root
+	
+	uname -r
+	
+	We confirmed we were running the right kernel with the following method:
+	
+	1. Upon calling make menuconfig with terminal 1, changed the Local Version from yocto-standard to group07kernel. 
+	2. After booting the kernel with qemu, using the command uname -r to print the local version. Upon seeing it was "group07kernel," we know it is correct. 
 	\section*{Qemu Flags}
 	\subsection{Command Line:}
 -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug".
@@ -57,20 +93,25 @@
 	\section*{Concurrency Questions}
 	%do we even need to do these? or should they not be the concurrency stuff?
 	\subsection{What do you think the main point of this assignment is?}
-	$\bullet$This assignment is intended to refresh our knowledge of parallel programming, by having us implement a multi-threaded program with shared resources.
+	$\bullet$For the concurrency, this assignment is intended to refresh our knowledge of parallel programming, by having us implement a multi-threaded program with shared resources.
+	
+	$\bullet$For the homework, this assignment is intended to prepare us for our future assignments by showing us how to setup and run our kernel.
 	
 	\subsection{How did you personally approach the problem? Design decisions, algorithm, etc.}
 	%[1] and [2] are placeholders for bibliography
-	$\bullet$We first researched the information provided in the Little Book of Semaphores[1], as well as the operation of mutex locks. The example provided by the book had been a useful starting point as it had a step-by-step approach. As the rdrand instruction is not supported on the provided os2 servers, we instead used the Mersenne Twister C Implementation[2] for our code. In our code, it was used by creating a function that generates a number within the given range passed to the function (two ints).  
+	$\bullet$For the concurrecy, we first researched the information provided in the class resources, as well as the operation of mutex locks. The example provided by the book had been a useful starting point as it had a step-by-step approach. As the rdrand instruction is not supported on the provided os2 servers, we instead used the Mersenne Twister C Implementation[1] for our code. In our code, it was used by creating a function that generates a number within the given range passed to the function (two ints).
 	
-	We used the Twister function genrand real2 to aquire a double value between 0 and 1, then we multiply the maximum value by that double until a value above the minimum was obtained. The shared buffer that had been implemented was an array of 32 item structs. The buffer operates by placing an item in the first available space, which is denoted by an Item.number value of 0. Items are consumed by the buffer in the same manner, where it finds the first available non-zero item, saves the Item.number and Item.wait values in a new Item, then resetting said Item's members to zero and returning its saved item. Consumer sleep time is read from the returning struct, and the producer sleep time is a randomly generated value.
+	$\bullet$For the Homework, we used the provided instructions and some basic googling to get our environment ready. No intensive programming was required, just a few command line arguments.
+	
 	
 	\subsection{How did you ensure your solution was correct? Testing details, for instance.}
-	Printf statements were used frequently within the program's operation, like when a producer had created an item, when a consumer removed and item, as well as when a buffer had been accessed. the program had been left to run until 100 items had been both produced as well as consumed. and the output had been checked to determine if that had what was expected.
+	$\bullet$For the concurrency, Printf statements were used frequently within the program's operation, like when a producer had created an item, when a consumer removed and item, as well as when a buffer had been accessed. the program had been left to run until 100 items had been both produced as well as consumed. and the output had been checked to determine if that had what was expected.
 	
+	$\bullet$For the homework, we had to confirm that our kernel was running my manually starting and remoting into it.
 	
 	\subsection{What did you learn?}
 	$\bullet$We learned how mutex locks and pthread waits operate, and how to implement both correctly. More specifically, we learned how pthread cond signals are used to unblock the threads, and when to call them. 
+	$\bullet$We also learned some of the basics that we will need moving forward for future assignments.
 	 
 	\section*{ Github Log }
 	\begin{tabular}{l l p{1.5in}}\textbf{Detail} & \textbf{Author} & \textbf{Description}\\\hline
@@ -113,7 +154,7 @@
 	\begin{tabular}{l l c p{1.1in}}\textbf{Date} & \textbf{Name} & \textbf{Hours} & \textbf{Description}\\\hline
 		4/14 & Nicholas & 2 & writeup\\\hline
 		4/13 & Nicholas & 2 & writeup\\\hline
-		4/12 & Lilliana & 2 & VM set up\\\hline
+		4/12 & Lilliana & 2 & Kernel set up\\\hline
 		4/12 & Nicholas & 2 & writeup\\\hline
 	\end{tabular}
 		
