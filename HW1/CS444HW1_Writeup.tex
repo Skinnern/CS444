@@ -1,52 +1,174 @@
-\documentclass[letterpaper,10pt,fleqn]{article}
+\documentclass[letterpaper,10pt,fleqn,draftclsnofoot,onecolumn]{IEEEtran}
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+\usepackage{balance}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{longtable,hyperref}
+\newcommand{\longtableendfoot}
 
-\def\name{Group 7}
 
-\parindent = 0.0 in
-\parskip = 0.2 in
-
-\title{Homework 1}
-\author{Group 7: Nicholas Skinner}
-
+\title{CS444 Homework 1}
+\def\name{Lilliana Watts, Nicholas Skinner, Yong Ping Li \\\today}
+\author{\name}
 \begin{document}
 	\maketitle
-	\hrule
+	\hrulefill
+	\section*{Commands Used}
+	Command log:
+	From directory Spring2018/group7/yocto-linux-3.19.2
 	
-	\section*{Actions Performed}
+	Terminal 1: 
+	make mrproper
+	
+	cp ../config-3.19.2-yocto-standard .config
+	
+	make menuconfig
+	
+	make -j4 all
+	
+	source ../environment-setup-i586-poky-linux
+	
+	qemu-system-i386 -gdb tcp::5507 -S -nographic -kernel bzImage-qemux86.bin -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug".
+	
+	
+	
+	Terminal 2: 
+	source ../environment-setup-i586-poky-linux
+	
+	\$GDB
+	
+	target remote localhost:5507
+	
+	continue
+	
+	Terminal 1: 
+	
+	(when prompted) root
+	
+	uname -r
+	
+	We confirmed we were running the right kernel with the following method:
+	
+	1. Upon calling make menuconfig with terminal 1, changed the Local Version from yocto-standard to group07kernel. 
+	2. After booting the kernel with qemu, using the command uname -r to print the local version. Upon seeing it was "group07kernel," we know it is correct. 
+	\section*{Qemu Flags}
+	\subsection{Command Line:}
+-drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug".
 
-	\section*{Command Line Flags}
-	Command Line w/ Flags:
-	qemu-system-i386 -gdb tcp::???? -S -nographic -kernel bzImage-qemux86.bin -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug".
+	{\bf Individual flags:} \newline
+	$\bullet$-{\bf gdb}: This flag is followed by a device (for this example localhost 5507) and signals a wait for a gdb connection on the device.
 	
-	-gdb: This flag is followed by a device (for this example localhost 5507) and signals a wait for a gdb connection on the device
+	$\bullet$-{\bf S}: this tells it to not start CPU on startup. This is the reason why the command will halt until you type continue.
 	
-	-S: this tells it to not start CPU on startup. This is the reason why the command will halt until you type continue.
+	$\bullet$-{\bf nographic}: This disables the graphics, and makes qemu into a command line interface.
 	
-	-nographic: This disables the graphics, and makes qemu into a command line interface
+	$\bullet$-{\bf kernel}: This signals to use the file that follows as the kernel image. 
 	
-	-kernel: This signals to use the file that follows as the kernel image. 
+	$\bullet$-{\bf drive}: This defines a new drive to use. The drive is used with the disk image that follows after the flag, for this setup, that is file=core-image-lsb-sdk-qemux86.ext4
 	
-	-drive: This defines a new drive to use. The drive is used with the disk image that follows after the flag, for this setup, that is file=core-image-lsb-sdk-qemux86.ext4
+	$\bullet$-{\bf enable-kvm}: This flag enables full kernel based VM support, allowing us to use the linux kernel to create and run a VM.
 	
-	-enable-kvm: This flag enables full kernel based VM support, allowing us to use the linux kernel to create and run a VM
+	$\bullet$-{\bf net none}: No network devices are being configured with our setup, so we use this flag.
 	
-	-net none: No network devices are being configured with our setup, so we use this flag.
+	$\bullet$-{\bf usb}: This flag enables the usb driver. We can use usb to upload files to the VM. 
 	
-	-usb: This flag enables the usb driver. We can use usb to upload files to the VM. 
+	$\bullet$-{\bf localtime}: Boots up the kernel with the current UTC.
 	
-	-localtime: Boots up the kernel with the current UTC.
+	$\bullet$--{\bf no-reboot}: this flag makes it so that instead of allowing a reboot, the program will just exit.
 	
-	--no-reboot: this flag makes it so that instead of allowing a reboot, the program will just exit.
-	
-	--append: This flag passes command line arguments to the booting kernel, it appears that in this example it is located in /dev/vda, it is using ttyS0 for the linux port, and the kernel is starting in debug mode.
+	$\bullet$--{\bf append}: This flag passes command line arguments to the booting kernel, it appears that in this example it is located in /dev/vda, it is using ttyS0 for the linux port, and the kernel is starting in debug mode.
 	
 	\section*{Concurrency Questions}
+	%do we even need to do these? or should they not be the concurrency stuff?
+	\subsection{What do you think the main point of this assignment is?}
+	$\bullet$For the concurrency, this assignment is intended to refresh our knowledge of parallel programming, by having us implement a multi-threaded program with shared resources.
 	
-	\section*{Actions Performed}
+	$\bullet$For the homework, this assignment is intended to prepare us for our future assignments by showing us how to setup and run our kernel.
 	
-	\section*{Version Control Log}
+	\subsection{How did you personally approach the problem? Design decisions, algorithm, etc.}
+	%[1] and [2] are placeholders for bibliography
+	$\bullet$For the concurrecy, we first researched the information provided in the class resources, as well as the operation of mutex locks. The example provided by the book had been a useful starting point as it had a step-by-step approach. As the rdrand instruction is not supported on the provided os2 servers, we instead used the Mersenne Twister C Implementation[1] for our code. In our code, it was used by creating a function that generates a number within the given range passed to the function (two ints).
+	
+	$\bullet$For the Homework, we used the provided instructions and some basic googling to get our environment ready. No intensive programming was required, just a few command line arguments.
+	
+	
+	\subsection{How did you ensure your solution was correct? Testing details, for instance.}
+	$\bullet$For the concurrency, Printf statements were used frequently within the program's operation, like when a producer had created an item, when a consumer removed and item, as well as when a buffer had been accessed. the program had been left to run until 100 items had been both produced as well as consumed. and the output had been checked to determine if that had what was expected.
+	
+	$\bullet$For the homework, we had to confirm that our kernel was running my manually starting and remoting into it.
+	
+	\subsection{What did you learn?}
+	$\bullet$We learned how mutex locks and pthread waits operate, and how to implement both correctly. More specifically, we learned how pthread cond signals are used to unblock the threads, and when to call them. 
+	$\bullet$We also learned some of the basics that we will need moving forward for future assignments.
+	 
+	\section*{ Github Log }
+	\begin{tabular}{l l p{1.5in}}\textbf{Detail} & \textbf{Author} & \textbf{Description}\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/9138e6857021329354027c49c35fea1604fd5585}{9138e68} & Nicholas & Initial commit\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/c0384d23d8fbcb4f73b26ab0fea4e7736f443359}{c0384d2} & Nicholas & Command Line Flags\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/05e52f4b508b9f440e9cb84cf2e2baa3ba738219}{05e52f4} & Nicholas & FixFormat ConcQuestions\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/74e34ce8bf215a03c8a2ea6e45e4887e311d3972}{74e34ce} & Nicholas & Add Table to Writeup\\\hline
+	\end{tabular}
+	%Table of Github commits
+	
+	%\begin{longtable}{|rllp{7cm}rrr|}
+	%\hline
+	%\multicolumn{1}{|c}{\textbf{V}} 
+	%& \multicolumn{1}{c}{\textbf{tag}}
+	%& \multicolumn{1}{c}{\textbf{Date}}
+	%& \multicolumn{1}{c}{\textbf{Commit Message}}
+	%& \multicolumn{1}{c}{\textbf{ML}}
+	%& \multicolumn{1}{c}{\textbf{LA}} 
+	%& \multicolumn{1}{c|}{\textbf{DL}} \\ 
+	%\endhead
+	%\hline
+	%\multicolumn{7}{|r|}{\longtableendfoot}\\
+	%\endfoot
+	%\hline
+	%\endlastfoot 
+	
+	%1 & 0 & 2018-04-03 & InitialCommit & 0 & 0 & 0 \\
+%\end{longtable}
+			%legend for table:
+	%V & Tag & Date & Commit Message & ML & AL & DL
+	%V 				- version ( just use the number after the commit above)
+	%tag 			- in case you need to make 
+	%Date 			- date it was pushed
+	%Commit Message	- Commit message along the commit
+	%ML 			- Modified lines
+	%AL 			- Added lines
+	%DL 			- Deleted lines
 	
 	\section*{Work Log}
-
-
+	\begin{tabular}{l l c p{1.1in}}\textbf{Date} & \textbf{Name} & \textbf{Hours} & \textbf{Description}\\\hline
+		4/14 & Nicholas & 2 & writeup\\\hline
+		4/13 & Nicholas & 2 & writeup\\\hline
+		4/12 & Lilliana & 2 & Kernel set up\\\hline
+		4/12 & Nicholas & 2 & writeup\\\hline
+	\end{tabular}
+		
+		\nocite{*}
+		\bibliographystyle{plain}
+		\bibliography{refs_a1}
+		
+		%\begin{thebibliography}{9}
+		%	\bibitem{mt}
+		%	Matsumoto, Makoto and Nishimura, Takuji.
+		%	\textit{Mersenne Twister}
+		%	2002.
+		%	\\\texttt{http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/CODES/mt19937ar.c}
+		%\end{thebibliography}
+	
 \end{document}
+
