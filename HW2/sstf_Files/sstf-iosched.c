@@ -1,6 +1,6 @@
 /*
  * elevator sstf
- * created from base file noop-iosched.c
+ * A modified version of noop-iosched.c
  */
 #include <linux/blkdev.h>
 #include <linux/elevator.h>
@@ -26,7 +26,6 @@ static int sstf_dispatch(struct request_queue *q, int force)
 	char direction = 'Z';
 	int sector = 0;
 	if (!list_empty(&sd->queue)) {
-		//printf("Ntest");
 		struct request *rq;
 		rq = list_entry(sd->queue.next, struct request, queuelist);
 		list_del_init(&rq->queuelist);
@@ -34,12 +33,10 @@ static int sstf_dispatch(struct request_queue *q, int force)
 
 		//Print if reading or writing at sector position
 		
-		if (rq_data_dir(rq) == 0){}	//returns 0 for read, nonzero for write
+		if (rq_data_dir(rq) == 0)	//returns 0 for read, nonzero for write
 			direction = 'R';
-		}
-		else{
+		else
 			direction = 'W';
-		}
 
 		sector = blk_rq_pos(rq);
 		printk("----- IO dispatch: %c at sector %d.\n",direction,sector);
@@ -56,15 +53,15 @@ static void sstf_add_request(struct request_queue *q, struct request *rq)
 {
 	struct sstf_data *sd = q->elevator->elevator_data;
 	/*
-		our C-LOOK logic
-		we will examine the sector of requests, 
-		if it is greater, then add to request queue
+		C-LOOK logic
+
+		Examine the sector of requests, if greater add to request queue
+
 		list_add_tail to add to queue
-		blk_rq_pos or rq_esd_sector? for checking the sector position
+		blk_rq_pos or rq_esd_sector? for checking sector position
 	*/
 	
 	struct list_head *s;
-	
 	//struct request *head_req = list_entry();
 	//int head = blk_rq_pos();
 	
@@ -73,23 +70,16 @@ static void sstf_add_request(struct request_queue *q, struct request *rq)
 		struct request *s_rq = list_entry(s, struct request, queuelist);
 		
 		if(blk_rq_pos(rq) >= sd->head) {
-			//printf("Ntest1");
 			//find queue position s where request belongs
-			if(sd->head > blk_rq_pos(s_rq)){
+			if(sd->head > blk_rq_pos(s_rq))
 				break;	//stop when reaching sector before head
-			}
-			else if(blk_rq_pos(s_rq) > blk_rq_pos(rq)){
-				//printf("Ntest2");
+			else if(blk_rq_pos(s_rq) > blk_rq_pos(rq))
 				break;	//stop when finding greater sector value
-			}
 			//Otherwise continue navigating for each
 		}
 		else {	//Find position in sector before head
-		//printf("Ntest3");
-			if( (sd->head > blk_rq_pos(s_rq)) && (blk_rq_pos(s_rq) > blk_rq_pos(rq)) ){
-				//printf("Ntest4");
+			if( (sd->head > blk_rq_pos(s_rq)) && (blk_rq_pos(s_rq) > blk_rq_pos(rq)) )
 				break;
-			}
 		}
 	}
 	int sector = 0;
@@ -104,9 +94,8 @@ sstf_former_request(struct request_queue *q, struct request *rq)
 {
 	struct sstf_data *sd = q->elevator->elevator_data;
 
-	if (rq->queuelist.prev == &sd->queue){
+	if (rq->queuelist.prev == &sd->queue)
 		return NULL;
-	}
 	return list_entry(rq->queuelist.prev, struct request, queuelist);
 }
 
@@ -115,9 +104,8 @@ sstf_latter_request(struct request_queue *q, struct request *rq)
 {
 	struct sstf_data *sd = q->elevator->elevator_data;
 
-	if (rq->queuelist.next == &sd->queue){
+	if (rq->queuelist.next == &sd->queue)
 		return NULL;
-	}
 	return list_entry(rq->queuelist.next, struct request, queuelist);
 }
 
