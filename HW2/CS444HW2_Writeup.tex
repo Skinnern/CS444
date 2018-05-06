@@ -47,7 +47,7 @@
 	\subsection{How should the TA evaluate your work? Provide detailed steps to prove correctness.}
 	$\bullet$ First, run makemenuconfig, and then select the sstf scheduler
 	
-	The TA should use our patchfile to patch the kernel, and then should boot with the following command line (assuming the files folder contains the core-image...ext4 and the current directory contains the linux-yocto-3.19 file)
+	The TA should use our patchfile to patch the kernel, and patch the block. if a hunk failure occurs, please delete the kconfig that is within the block structure. Then, they should boot with the following command line (assuming the files folder contains the core-image...ext4 and the current directory contains the linux-yocto-3.19 file)
 	
 	$\bullet$ qemu-system-i386 -gdb tcp::5507 -nographic -S -kernel linus-yocto-3.19/arch/i386/boot/bzImage -drive files/core-image-lsb-sdk-qemux86.ext4 -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/hda rwconsole=ttyS0 debug"
 	
