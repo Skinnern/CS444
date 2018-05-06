@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.5)  1 MAY 2018 12:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.14)  5 MAY 2018 20:00
 entering extended mode
 **./CS444HW2_Writeup.tex
 (CS444HW2_Writeup.tex
@@ -17,7 +17,7 @@ Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 \@IEEEtrantmptoksA=\toks14
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 503.
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 -- Using 8.5in x 11in (letter) paper.
@@ -112,41 +112,41 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \c@IEEEbiography=\count93
 \@IEEEtranrubishbin=\box27
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.
-sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.s
+ty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.st
-y"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.sty
+"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.
-sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.s
+ty"
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graph
-ics.cfg"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graphi
+cs.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdfte
-x.def"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdftex
+.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen126
 \Gin@req@width=\dimen127
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb.s
-ty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb.st
+y"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.
-sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.s
+ty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks16
 \symAMSa=\mathgroup4
@@ -154,30 +154,26 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.st
-y"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty
+"
 Package: amsmath 2017/09/02 v2.17a AMS math features
 \@mathmargin=\skip44
 
 For additional information on amsmath, use the `?' option.
-
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.st
-y"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.sty
+"
 Package: amstext 2000/06/29 v2.01 AMS text
-
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
+ ("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
 "
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks17
 \ex@=\dimen128
 ))
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty
-"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen129
-)
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
-"
+) ("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.st
+y"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count94
@@ -218,7 +214,7 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
 Package: amsthm 2017/10/31 v2.20.4
 \thm@style=\toks22
 \thm@bodyfont=\toks23
@@ -229,35 +225,36 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@postskip=\skip48
 \thm@headsep=\skip49
 \dth@everypar=\toks27
-) ("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\alltt.sty"
+) ("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\alltt.sty"
 Package: alltt 1997/06/16 v2.0g defines alltt environment
-) ("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\float\float.sty"
+)
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count106
 \float@exts=\toks28
 \float@box=\box30
 \@float@everytoks=\toks29
 \@floatcapt=\box31
-) ("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\color.s
-ty"
+)
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\color.sty"
 Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color
-.cfg"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color.
+cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
-) ("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
+) ("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\preprint\balance.s
-ty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\preprint\balance.st
+y"
 Package: balance 1999/02/23 4.3 (PWD)
 \oldvsize=\dimen137
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\enumitem\enumitem.
-sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\enumitem\enumitem.s
+ty"
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip50
 \enit@outerparindent=\dimen138
@@ -265,21 +262,21 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box32
 \enitdp@description=\count107
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.
-sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.s
+ty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.s
-ty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.st
+y"
 Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.
-sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.s
+ty"
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.
-sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.s
+ty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count108
@@ -295,19 +292,19 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen146
 \Gm@dimlist=\toks31
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.
-cfg"))
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperref.
-sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.c
+fg"))
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperref.s
+ty"
 Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsub-
-hyperref.sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsub-h
+yperref.sty"
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsub-
-generic.sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsub-g
+eneric.sty"
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
@@ -346,26 +343,26 @@ Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\auxhook.s
-ty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\auxhook.st
+y"
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoptions
-.sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.
+sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen147
 \Hy@linkcounter=\count111
 \Hy@pagecounter=\count112
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.de
-f"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def
+"
 File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
 )
 \Hy@SavedSpaceFactor=\count113
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\hyperref.
-cfg"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\hyperref.c
+fg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4509.
@@ -396,22 +393,22 @@ LaTeX Info: Redefining \pageref on input line 6443.
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex.d
-ef"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex.de
+f"
 File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
 \Fld@listcount=\count119
 \c@bookmark@seq@number=\count120
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunfile
-check.sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunfilec
+heck.sty"
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip51
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\longtable.st
-y"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\longtable.sty
+"
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LTleft=\skip52
 \LTright=\skip53
@@ -448,8 +445,8 @@ LaTeX Font Info:    ... okay on input line 25.
 
 -- Lines per column: 34 (approximate, difference = 8.295pt).
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
-ii"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mki
+i"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count126
 \scratchdimen=\dimen152
@@ -463,12 +460,12 @@ ii"
 \makeMPintoPDFobject=\count131
 \everyMPtoPDFconversion=\toks34
 )
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-
-base.sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-b
+ase.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.st
-y"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty
+"
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -515,12 +512,12 @@ G,.JBIG2,.JB2,.eps]
 \AtBeginShipoutBox=\box38
 Package hyperref Info: Link coloring OFF on input line 25.
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.s
-ty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.st
+y"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\gettitl
-estring.sty"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\gettitle
+string.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count132
@@ -534,52 +531,43 @@ LaTeX Info: Redefining \nameref on input line 25.
 
 LaTeX Font Info:    Try loading font information for U+msa on input line 34.
 
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 34.
-("C:\Users\nicks\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (CS444HW2_Writeup.bbl [1{C:/Users/nicks/AppData/Local/MiKTeX/2.9/pdftex/confi
-g/pdftex.map}]
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ” in font ptmr7t!
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ” in font ptmr7t!
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ” in font ptmr7t!
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 78.
+[1{C:/Users/Nick/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 86.
  [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
+[3]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 86.
  (CS444HW2_Writeup.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 78.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 78.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 86.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 86.
 Package rerunfilecheck Info: File `CS444HW2_Writeup.out' has not changed.
-(rerunfilecheck)             Checksum: 2B3B1824C54766A304CB511F68C52285;562.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 78.
+(rerunfilecheck)             Checksum: A70BFBE31B0CEDF71D5D416DB8FF6862;515.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 86.
  ) 
 Here is how much of TeX's memory you used:
- 7726 strings out of 493305
- 118754 string characters out of 3129803
- 213150 words of memory out of 3000000
- 11170 multiletter control sequences out of 15000+200000
- 37788 words of font info for 82 fonts, out of 3000000 for 9000
+ 7700 strings out of 493305
+ 118292 string characters out of 3130237
+ 214111 words of memory out of 3000000
+ 11155 multiletter control sequences out of 15000+200000
+ 34688 words of font info for 70 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,8n,28p,390b,358s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/nicks/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
-}<C:/Users/nicks/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb><C:/Users/nicks/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmsy6.pfb><C:/Users/nicks/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/urw/times/utmb8a.pfb><C:/Users/nicks/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/urw/times/utmr8a.pfb><C:/Users/nicks/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on CS444HW2_Writeup.pdf (2 pages, 63523 bytes).
+ 28i,8n,28p,1105b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}
+<C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb><C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/ti
+mes/utmb8a.pfb><C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw
+/times/utmr8a.pfb><C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
+urw/times/utmri8a.pfb>
+Output written on CS444HW2_Writeup.pdf (3 pages, 58519 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 14 named destinations out of 1000 (max. 500000)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 65 PDF objects out of 1000 (max. 8388607)
+ 13 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
