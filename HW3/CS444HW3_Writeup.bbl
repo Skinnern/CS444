@@ -1,3 +1,8 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{orlybook}
+Jonathan Corbet, Alessandro Rubini, and Greg Kroah-Hartman.
+\newblock {\em Linux Device Drivers}.
+\newblock O'Reilly Media, Inc., 3 edition, 2005.
 
 \end{thebibliography}

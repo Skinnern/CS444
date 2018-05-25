@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.14)  23 MAY 2018 22:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.14)  24 MAY 2018 19:55
 entering extended mode
 **./CS444HW3_Writeup.tex
 (CS444HW3_Writeup.tex
@@ -529,45 +529,51 @@ LaTeX Info: Redefining \nameref on input line 25.
 \@outlinefile=\write3
 \openout3 = `CS444HW3_Writeup.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 33.
+LaTeX Font Info:    Try loading font information for U+msa on input line 34.
 
 ("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 33.
+LaTeX Font Info:    Try loading font information for U+msb on input line 34.
 
 ("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 70.
-
 [1{C:/Users/Nick/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 70.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 62.
 
-(CS444HW3_Writeup.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 70.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 70.
+("C:\Users\Nick\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+[2] (CS444HW3_Writeup.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 109.
+ [3]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 109.
+ (CS444HW3_Writeup.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 109.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 109.
 Package rerunfilecheck Info: File `CS444HW3_Writeup.out' has not changed.
-(rerunfilecheck)             Checksum: 3BB5512F597CC3EEFC6AC1B3078755D3;392.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 70.
+(rerunfilecheck)             Checksum: AAD6BFBF2CE395873805BCF22144D661;439.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 109.
  ) 
 Here is how much of TeX's memory you used:
- 7696 strings out of 493305
- 118250 string characters out of 3130237
- 213111 words of memory out of 3000000
- 11154 multiletter control sequences out of 15000+200000
- 34688 words of font info for 70 fonts, out of 3000000 for 9000
+ 7743 strings out of 493305
+ 118953 string characters out of 3130237
+ 214141 words of memory out of 3000000
+ 11188 multiletter control sequences out of 15000+200000
+ 36339 words of font info for 73 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,8n,28p,411b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,8n,28p,522b,334s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}
 <C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmsy10.pfb><C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/ti
-mes/utmb8a.pfb><C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw
-/times/utmr8a.pfb><C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
-urw/times/utmri8a.pfb>
-Output written on CS444HW3_Writeup.pdf (1 page, 51882 bytes).
+/cmsy10.pfb><C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/co
+urier/ucrr8a.pfb><C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/u
+rw/times/utmb8a.pfb><C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/urw/times/utmr8a.pfb><C:/Users/Nick/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/urw/times/utmri8a.pfb>
+Output written on CS444HW3_Writeup.pdf (3 pages, 74232 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 10 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 74 PDF objects out of 1000 (max. 8388607)
+ 14 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
