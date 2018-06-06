@@ -1,0 +1,110 @@
+\documentclass[letterpaper,10pt,fleqn,draftclsnofoot,onecolumn]{IEEEtran}
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+\usepackage{balance}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{longtable,hyperref}
+\newcommand{\longtableendfoot}
+
+
+\title{CS444 Homework 3}
+\def\name{Lilliana Watts, Nicholas Skinner, Yong Ping Li \\\today}
+\author{\name}
+\begin{document}
+	\maketitle
+	\hrulefill
+	\section*{Design Plan}
+	Plans for this assignment were to research and implement an encrypted block device. For this, we will need to look into, and research drivers, encryption, and block I/O. to implement this we will create our files, and then test them against the kernel and find some form of logging to ensure we are doing everything correctly.
+	
+	\section*{Writeup Questions}
+	
+	\subsection{What do you think the main point of this assignment is?}
+	$\bullet$ The main point of this assignment seems to be to learn how to use a poorly documented API, for this assignment, it is the Kernel Crypto API. Another addition to the main point would be teaching us the important parts of block devices, as well as cryptography, we learned about what goes into these drivers to make them function. 
+	
+	\subsection{How did you personally approach the problem? Design decisions, algorithm, etc.}
+	%[1] and [2] are placeholders for bibliography
+	$\bullet$ Our team's approach to this project was to research as much as we could about Block devices in the linux kernel, we had used chapter 16 of the Linux Device drivers as the basis for our device driver. \cite{orlybook}%cite
+	The next step was to understand how to use the crypto that is buit into linux. After that, we then needed to combine the two prior steps into our group's device driver.
+	
+	\subsection{How did you ensure your solution was correct? Testing details, for instance.}
+	$\bullet$ To test and ensure our solution had been working properly, we had\\ used printk statements throughout our code to ensure that we could see how it was working with both encrypted as well as unencrypted data.\\
+	\textbf{Testing procedure for ensuring correctness of this problem included the following:}\newline
+	$\bullet$ Clone the kernel code to a fresh instance of a repo: git clone git://git.yoctoproject.org/linux-yocto-3.19\\
+	$\bullet$ Navigate into the Git repo folder: cd linux-yocto-3.19
+	$\bullet$ Checkout the appropriate version of our kernel: git checkout v3.19.2\\
+	$\bullet$ Apply the patch file : git apply Homework3.patch\\
+	$\bullet$ Source the proper environment for the kernel: source\\ /scratch/files/environment-setup-i586-poky-linux.csh\\
+	$\bullet$ Copy the core into the linux folder: cp\\ /scratch/files/core-image-lsb-sdk-qemux86.ext4 .\\
+	$\bullet$ Copy the config file into the linux folder: cp\\ /scratch/files/config-3.19.2-yocto-standard .config\\
+	$\bullet$ Go into the menuconfig, and then set sbd into a module:\\
+	make menuconfig\\
+	Go to device drivers\\
+	Enter block drivers\\
+	go to the SBD block driver\\
+	Press M\\
+	Save the new configuration, and then exit\\
+	$\bullet$ After setting the menuconfig, now we will make the VM: make -j4 all\\
+	$\bullet$ next we will start the VM with networking enabled: qemu-system-i386 -gdb tcp::5507 -S -nographic -kernel bzImage-qemux86.bin -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug".\\
+	$\bullet$ Login with the root account, there is no password, so just type: root
+	$\bullet$ go to the base directory: cd .. cd ..\\
+	$\bullet$ Copy the module into the base directory using SCP: \begin{verbatim}scp skinnern@os2.engr.oregonstate.edu:
+	/scratch/spring2018/group7_new/linux-yocto-3.19/drivers/block/sbd.ko . \end{verbatim}
+	$\bullet$ start up the module: insmod sbd.ko\\
+	$\bullet$ Create the ext2 file directory: mkfs.ext2 /dev/sbd0\\
+	$\bullet$ Create a directory to mount to, if it does not exist already: mkdir /mnt\\
+	$\bullet$ We will then mount it: mount /dev/sbd0 /mnt\\
+	$\bullet$ Enter some text into a file that is mounted on the dir: echo "Test this stuff" > /mnt/test\\
+	$\bullet$ Next, try to find that test on the device by using grep: grep -a "Test" /dev/sbd0\\
+	$\bullet$ If nothing is returned for the previous step, then there was a successful encryption, if there was ne encryption that had occurred, then you would be able to find the text with using grep. You can also try any other things that are put into the file, but as long as they do not show up in grep, we will have encryption.
+	
+	\subsection{What did you learn?}
+	$\bullet$ Document, document document. Documentation is very important when creating a system, or any segment of code for that matter. We also learned that we are able to search for programs that had been created for other operating systems with similar architecture for code for general ideas on how to implement the program that we are trying to write. We also through some trial and error learned how to troubleshoot what devices and drivers are doing through debugging and printk statements.
+
+	\section*{ Github Log }
+	\begin{tabular}{l l p{1.5in}}\textbf{Detail} & \textbf{Author} & \textbf{Description}\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/77f914a6fe466b8115d31d7a97e08b2e86b00b7a}{77f914a} & Nicholas & Start Writeup\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/49f9b37d655d697e8b1920ff55d81f436ba8712a}{49f9b37} & Nicholas & Update with Patch\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/9df8749ef6f1f50dbcf79f0da37e65cf45f5421c}{9df8749} & Nicholas & Update Writeup\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/cc9ed65f3d4bf9db8bc0b8af124e418ba2d62287}{cc9ed65} & Nicholas & Fix Patch File\\\hline
+	\end{tabular}
+	%Table of Github commits
+	
+	%1 & 0 & 2018-04-03 & InitialCommit & 0 & 0 & 0 \\
+%\end{longtable}
+			%legend for table:
+	%V & Tag & Date & Commit Message & ML & AL & DL
+	%V 				- version ( just use the number after the commit above)
+	%tag 			- in case you need to make 
+	%Date 			- date it was pushed
+	%Commit Message	- Commit message along the commit
+	%ML 			- Modified lines
+	%AL 			- Added lines
+	%DL 			- Deleted lines
+	
+	\section*{Work Log}
+	\begin{tabular}{l l c p{1.1in}}\textbf{Date} & \textbf{Name} & \textbf{Hours} & \textbf{Description}\\\hline
+		5/14 & Nicholas & 1 & Setup Document\\\hline
+		5/20 & Nicholas & 2 & Research Block\\\hline
+		5/21 & Nicholas & 4 & Implementation\\\hline
+		5/22 & Nicholas & 3 & Fixing Encryption\\\hline
+		5/22 & Nicholas & 1 & Testing\\\hline
+		5/24 & Nicholas & 2 & Finish Writeup\\\hline
+	\end{tabular}
+		\nocite{*}
+		\bibliographystyle{plain}
+		\bibliography{refs_a1}
+	
+\end{document}
+
