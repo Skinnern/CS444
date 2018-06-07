@@ -94,6 +94,11 @@ typedef s16 slobidx_t;
 typedef s32 slobidx_t;
 #endif
 
+long claimed_memory[100];
+long free_memory[100];
+int current_index;
+int temp_free_memory=2; 
+
 struct slob_block {
 	slobidx_t units;
 };
@@ -366,6 +371,14 @@ static void *slob_alloc(size_t size, gfp_t gfp, int align, int node)
 		__SetPageSlab(sp);
 
 		spin_lock_irqsave(&slob_lock, flags);
+
+		/* Assignment 4
+		   Calculate the free/claimed memory inside the lock */
+		claimed_memory[current_index] = size;
+		free_memory[current_index] = (temp_free_memory * SLOB_UNIT) - SLOB_UNIT + 1;
+		current_index = (current_index + 1) % 100;
+		/* Assignment 4 */
+
 		sp->units = SLOB_UNITS(PAGE_SIZE);
 		sp->freelist = b;
 		INIT_LIST_HEAD(&sp->lru);
@@ -706,4 +719,32 @@ void __init kmem_cache_init(void)
 void __init kmem_cache_init_late(void)
 {
 	slab_state = FULL;
+}
+
+asmlinkage long sys_get_slob_amt_claimed(void) {
+	long out = 0;
+	int i = 0;
+	
+	for(i = 0; i < 100; i++)
+	{
+		out = out + claimed_memory[i];
+	}
+	
+	out = out/100;
+
+	return out;
+}
+
+asmlinkage long sys_get_slob_amt_free(void) {
+	long out = 0;
+	int i = 0;
+	
+	for(i = 0; i < 100; i++)
+	{
+		out = out + free_memory[i];
+	}
+	
+	out = out/100;
+
+	return out;
 }

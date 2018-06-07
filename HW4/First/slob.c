@@ -92,7 +92,7 @@ typedef s32 slobidx_t;
 long claimed_memory[100];
 long free_memory[100];
 int current_index;
-int temp_free_memory=0; 
+int temp_free_memory=2; 
 
 struct slob_block {
 	slobidx_t units;
@@ -328,12 +328,12 @@ static void *slob_alloc(size_t size, gfp_t gfp, int align, int node)
 
 		spin_lock_irqsave(&slob_lock, flags);
 
-		/* Lab 3
+		/* Assignment 4
 		   Calculate the free/claimed memory inside the lock */
 		claimed_memory[current_index] = size;
 		free_memory[current_index] = (temp_free_memory * SLOB_UNIT) - SLOB_UNIT + 1;
 		current_index = (current_index + 1) % 100;
-		/* Lab 3 */
+		/* Assignment 4 */
 
 		sp->units = SLOB_UNITS(PAGE_SIZE);
 		sp->freelist = b;
