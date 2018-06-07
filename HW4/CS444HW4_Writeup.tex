@@ -1,0 +1,77 @@
+\documentclass[letterpaper,10pt,fleqn,draftclsnofoot,onecolumn]{IEEEtran}
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+\usepackage{balance}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{longtable,hyperref}
+\newcommand{\longtableendfoot}
+
+
+\title{CS444 Homework 3}
+\def\name{Lilliana Watts, Nicholas Skinner, Yong Ping Li \\\today}
+\author{\name}
+\begin{document}
+	\maketitle
+	\hrulefill
+	\section*{Design Plan}
+	In starting our design plans, we decided to look at the base SLOB.c as well as do some reading and research to gain a better understanding of what it is doing, and what are the core components of it. We had decided that it would be a good idea to implement a system call to display our test results through a system call, so we would need to do some research to implement that as well.
+	
+	\section*{Writeup Questions}
+	
+	\subsection{What do you think the main point of this assignment is?}
+	$\bullet$ The main point of this assignment is to have our teams research and understand how memory is managed, and how it is allocated in the SLOB allocator. We are also intended to learn how to implement our own system calls, and then use them to test our implementation in the kernel.
+	
+	\subsection{How did you personally approach the problem? Design decisions, algorithm, etc.}
+	%[1] and [2] are placeholders for bibliography
+	$\bullet$ We started by examining the existing SLOB.c implementation, and we would look to modify its page allocation to search for the best fit in the free memory, rather than the first possible fit. We did so by iterating through pages in memory, and saving the relevant data to any location that had less wasted memory than the last best fit. We would iterate until either an exact fit had been found, or when we reached the last possible candidate location. If no location could be found with enough memory requested, we would have the function return NULL.
+	
+	$\bullet$ After Finding the best fit, we had reused the existing code for allocation after reassigning the best values to those that would have previously been the first fit values.
+	
+	\subsection{How did you ensure your solution was correct? Testing details, for instance.}
+	$\bullet$ To ensure the solution was correct, we had designed a system call in order to report the amount of memory in use.
+	
+	\subsection{What did you learn?}
+	$\bullet$ We learned how system calls are implemented within the linux kernel, as well as how those calls are invoked within the user space. We also learned how a slab allocator searches for available memory, and how it allocates the memory to its kernel objects.
+
+	\section*{ Github Log }
+	\begin{tabular}{l l p{1.5in}}\textbf{Detail} & \textbf{Author} & \textbf{Description}\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/77f914a6fe466b8115d31d7a97e08b2e86b00b7a}{77f914a} & Nicholas & Placeholder\\\hline
+
+	\end{tabular}
+	%Table of Github commits
+	
+	%1 & 0 & 2018-04-03 & InitialCommit & 0 & 0 & 0 \\
+%\end{longtable}
+			%legend for table:
+	%V & Tag & Date & Commit Message & ML & AL & DL
+	%V 				- version ( just use the number after the commit above)
+	%tag 			- in case you need to make 
+	%Date 			- date it was pushed
+	%Commit Message	- Commit message along the commit
+	%ML 			- Modified lines
+	%AL 			- Added lines
+	%DL 			- Deleted lines
+	
+	\section*{Work Log}
+	\begin{tabular}{l l c p{1.1in}}\textbf{Date} & \textbf{Name} & \textbf{Hours} & \textbf{Description}\\\hline
+		6/6 & Nicholas & 1 & Setup Document\\\hline
+
+	\end{tabular}
+		\nocite{*}
+		\bibliographystyle{plain}
+		\bibliography{refs_a1}
+	
+\end{document}
+
