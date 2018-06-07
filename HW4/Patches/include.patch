@@ -1,0 +1,13 @@
+diff -ruN Clean-linux-yocto-3.19/include/linux/syscalls.h First-linux-yocto-3.19/include/linux/syscalls.h
+--- Clean-linux-yocto-3.19/include/linux/syscalls.h	2018-06-07 14:42:31.684014223 -0700
++++ First-linux-yocto-3.19/include/linux/syscalls.h	2018-06-07 15:22:02.683453130 -0700
+@@ -882,4 +882,9 @@
+ 			const char __user *const __user *argv,
+ 			const char __user *const __user *envp, int flags);
+ 
++asmlinkage long sys_slob_mem_use(void);
++
++asmlinkage long sys_get_slob_amt_claimed(void);
++asmlinkage long sys_get_slob_amt_free(void);
++
+ #endif

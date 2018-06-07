@@ -40,8 +40,38 @@
 	$\bullet$ After Finding the best fit, we had reused the existing code for allocation after reassigning the best values to those that would have previously been the first fit values.
 	
 	\subsection{How did you ensure your solution was correct? Testing details, for instance.}
-	$\bullet$ To ensure the solution was correct, we had designed a system call in order to report the amount of memory in use.
+	$\bullet$ To ensure the solution was correct, we had designed a system call in order to report the amount of memory in use, and then made a c file that calls this system call.
 	
+	%TESTING DETAILS
+	
+	$\bullet$ Clone the kernel code to a fresh instance of a repo: git clone git://git.yoctoproject.org/linux-yocto-3.19\\
+	$\bullet$ Navigate into the Git repo folder: cd linux-yocto-3.19
+	$\bullet$ Checkout the appropriate version of our kernel: git checkout v3.19.2\\
+	$\bullet$ Apply the patch file : git apply mm.patch\\
+	$\bullet$ Apply the patch file : git apply include.patch\\
+	$\bullet$ Apply the patch file : git apply Sys.patch\\
+	$\bullet$ Source the proper environment for the kernel: source\\ /scratch/files/environment-setup-i586-poky-linux.csh\\
+	$\bullet$ Copy the core into the linux folder: cp\\ /scratch/files/core-image-lsb-sdk-qemux86.ext4 .\\
+	$\bullet$ Copy the config file into the linux folder: cp\\ /scratch/files/config-3.19.2-yocto-standard .config\\
+	$\bullet$ Go into the menuconfig, and then set the SLOB to be active  into a module:\\
+	make menuconfig\\
+	Go to General Setup\\
+	Under Choose SLAB allocator, select SLOB block drivers\\
+	Save the new configuration, and then exit\\
+	$\bullet$ After setting the menuconfig, now we will make the VM: make -j4 all\\
+	$\bullet$ next we will start the VM with networking enabled: qemu-system-i386 -gdb tcp::5507 -S -nographic -kernel bzImage-qemux86.bin -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug".\\
+	$\bullet$ Login with the root account, there is no password, so just type: root\\
+	$\bullet$ we want to copy our fragment file here using whatever method we can, I used scp (see below)
+	%Where is the underfull problem?
+	$\bullet$ We will now Compile the fragment file using\\
+	$\bullet$ gcc Fragment -o out\\
+	$\bullet$ Run the fragment file ./out\\
+	$\bullet$ Copy our testing file using SCP: \begin{verbatim}scp skinnern@os2.engr.oregonstate.edu:
+	/scratch/spring2018/group7_new/SLOBPATCH/VerificationScripts/
+	Reg/Fragment.c . \end{verbatim}
+
+	%these underfull hboxes are gonna make my hairs go grey
+	%TESTING DETAILS END
 	\subsection{What did you learn?}
 	$\bullet$ We learned how system calls are implemented within the linux kernel, as well as how those calls are invoked within the user space. We also learned how a slab allocator searches for available memory, and how it allocates the memory to its kernel objects.
 
@@ -67,6 +97,12 @@
 	\section*{Work Log}
 	\begin{tabular}{l l c p{1.1in}}\textbf{Date} & \textbf{Name} & \textbf{Hours} & \textbf{Description}\\\hline
 		6/6 & Nicholas & 1 & Setup Document\\\hline
+		6/7 & Nicholas & 3 & Research SLOB\\\hline
+		6/7 & Nicholas & 3 & Write Best SLOB\\\hline
+		6/7 & Nicholas & 2 & Make patches and test\\\hline
+		6/7 & Nicholas & 1 & organize and tarball\\\hline
+
+
 
 	\end{tabular}
 		\nocite{*}
