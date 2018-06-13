@@ -1,0 +1,11 @@
+diff -ruN Clean-linux-yocto-3.19/arch/x86/syscalls/syscall_32.tbl First-linux-yocto-3.19/arch/x86/syscalls/syscall_32.tbl
+--- Clean-linux-yocto-3.19/arch/x86/syscalls/syscall_32.tbl	2018-06-07 14:42:27.903953335 -0700
++++ First-linux-yocto-3.19/arch/x86/syscalls/syscall_32.tbl	2018-06-07 15:21:07.604483808 -0700
+@@ -365,3 +365,6 @@
+ 356	i386	memfd_create		sys_memfd_create
+ 357	i386	bpf			sys_bpf
+ 358	i386	execveat		sys_execveat			stub32_execveat
++359	i386	slob_mem_use		sys_slob_mem_use
++360	i386	get_slob_amt_claimed		sys_get_slob_amt_claimed
++361	i386	get_slob_amt_free		sys_get_slob_amt_free
+\ No newline at end of file

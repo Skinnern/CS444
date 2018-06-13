@@ -1,0 +1,122 @@
+\documentclass[letterpaper,10pt,fleqn,draftclsnofoot,onecolumn]{IEEEtran}
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+\usepackage{balance}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{longtable,hyperref}
+\newcommand{\longtableendfoot}
+
+
+\title{CS444 Homework 3}
+\def\name{Lilliana Watts, Nicholas Skinner, Yong Ping Li \\\today}
+\author{\name}
+\begin{document}
+	\maketitle
+	\hrulefill
+	\section*{Design Plan}
+	In starting our design plans, we decided to look at the base SLOB.c as well as do some reading and research to gain a better understanding of what it is doing, and what are the core components of it. We had decided that it would be a good idea to implement a system call to display our test results through a system call, so we would need to do some research to implement that as well.
+	
+	\section*{Writeup Questions}
+	
+	\subsection{What do you think the main point of this assignment is?}
+	$\bullet$ The main point of this assignment is to have our teams research and understand how memory is managed, and how it is allocated in the SLOB allocator. We are also intended to learn how to implement our own system calls, and then use them to test our implementation in the kernel.
+	
+	\subsection{How did you personally approach the problem? Design decisions, algorithm, etc.}
+	%[1] and [2] are placeholders for bibliography
+	$\bullet$ We started by examining the existing SLOB.c implementation, and we would look to modify its page allocation to search for the best fit in the free memory, rather than the first possible fit. We did so by iterating through pages in memory, and saving the relevant data to any location that had less wasted memory than the last best fit. We would iterate until either an exact fit had been found, or when we reached the last possible candidate location. If no location could be found with enough memory requested, we would have the function return NULL.
+	
+	$\bullet$ After Finding the best fit, we had reused the existing code for allocation after reassigning the best values to those that would have previously been the first fit values.
+	
+	\subsection{How did you ensure your solution was correct? Testing details, for instance.}
+	$\bullet$ To ensure the solution was correct, we had designed a system call in order to report the amount of memory in use, and then made a c file that calls this system call.
+	
+	%TESTING DETAILS
+	
+	$\bullet$ Clone the kernel code to a fresh instance of a repo: git clone git://git.yoctoproject.org/linux-yocto-3.19\\
+	$\bullet$ Navigate into the Git repo folder: cd linux-yocto-3.19
+	$\bullet$ Checkout the appropriate version of our kernel: git checkout v3.19.2\\
+	$\bullet$ Apply the patch file : git apply mm.patch\\
+	$\bullet$ Apply the patch file : git apply include.patch\\
+	$\bullet$ Apply the patch file : git apply Sys.patch\\
+	$\bullet$ Source the proper environment for the kernel: source\\ /scratch/files/environment-setup-i586-poky-linux.csh\\
+	$\bullet$ Copy the core into the linux folder: cp\\ /scratch/files/core-image-lsb-sdk-qemux86.ext4 .\\
+	$\bullet$ Copy the config file into the linux folder: cp\\ /scratch/files/config-3.19.2-yocto-standard .config\\
+	$\bullet$ Go into the menuconfig, and then set the SLOB to be active  into a module:\\
+	make menuconfig\\
+	Go to General Setup\\
+	Under Choose SLAB allocator, select SLOB block drivers\\
+	Save the new configuration, and then exit\\
+	$\bullet$ After setting the menuconfig, now we will make the VM: make -j4 all\\
+	$\bullet$ next we will start the VM with networking enabled: qemu-system-i386 -gdb tcp::5507 -S -nographic -kernel bzImage-qemux86.bin -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug".\\
+	$\bullet$ Login with the root account, there is no password, so just type: root\\
+	$\bullet$ we want to copy our fragment file here using whatever method we can, I used scp (see below)
+	%Where is the underfull problem?
+	$\bullet$ We will now Compile the fragment file using\\
+	$\bullet$ gcc Fragment -o out\\
+	$\bullet$ Run the fragment file ./out\\
+	$\bullet$ Copy our testing file using SCP: \begin{verbatim}scp skinnern@os2.engr.oregonstate.edu:
+	/scratch/spring2018/group7_new/SLOBPATCH/VerificationScripts/
+	Reg/Fragment.c . \end{verbatim}
+
+	%these underfull hboxes are gonna make my hairs go grey
+	%TESTING DETAILS END
+	\subsection{What did you learn?}
+	$\bullet$ We learned how system calls are implemented within the linux kernel, as well as how those calls are invoked within the user space. We also learned how a slab allocator searches for available memory, and how it allocates the memory to its kernel objects.
+
+	\section*{ Github Log }
+	\begin{tabular}{l l p{1.5in}}\textbf{Detail} & \textbf{Author} & \textbf{Description}\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/d25afae5ff871e6525947472b1037c35a23dbf66}{d25afae} & Nicholas & Start Writeup\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/9a5601c278df3c643fa2316371fe2b797e57e5d5}{9a5601c} & Nicholas & First and Best\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/898a4bb59e66615d72b66c95f851c75e738dfb82}{898a4bb} & Nicholas & syscalls\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/eee6bb6402b1f34a0f840024fe803216cd9cc163}{eee6bb6} & Nicholas & fix syscalls\\\hline
+		\href{https://github.com/Skinnern/CS444/commit/fbc270174b2ce3756389909b5256367227706fa9}{fbc2701} & Nicholas & test is working\\\hline
+		
+		\href{https://github.com/Skinnern/CS444/commit/344511386bc26db747042fb171bd17a31a7e0784}{3445113} & Nicholas & Writeup Updates\\\hline
+		
+		\href{https://github.com/Skinnern/CS444/commit/6ce02af9c650f3528ad7bf0778dd6474aec80ea5}{6ce02af} & Nicholas & finish\\\hline
+		
+		
+	\end{tabular}
+	%Table of Github commits
+	
+	%1 & 0 & 2018-04-03 & InitialCommit & 0 & 0 & 0 \\
+%\end{longtable}
+			%legend for table:
+	%V & Tag & Date & Commit Message & ML & AL & DL
+	%V 				- version ( just use the number after the commit above)
+	%tag 			- in case you need to make 
+	%Date 			- date it was pushed
+	%Commit Message	- Commit message along the commit
+	%ML 			- Modified lines
+	%AL 			- Added lines
+	%DL 			- Deleted lines
+	
+	\section*{Work Log}
+	\begin{tabular}{l l c p{1.1in}}\textbf{Date} & \textbf{Name} & \textbf{Hours} & \textbf{Description}\\\hline
+		6/6 & Nicholas & 1 & Setup Document\\\hline
+		6/7 & Nicholas & 3 & Research SLOB\\\hline
+		6/7 & Nicholas & 3 & Write Best SLOB\\\hline
+		6/7 & Nicholas & 2 & Make patches and test\\\hline
+		6/7 & Nicholas & 1 & organize and tarball\\\hline
+
+
+
+	\end{tabular}
+		\nocite{*}
+		\bibliographystyle{plain}
+		\bibliography{refs_a1}
+	
+\end{document}
+
